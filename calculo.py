@@ -1,47 +1,43 @@
 
-# Funciones calculo
+# Funciones de calculo
 
 import random
 
 
-def calcular(num1, num2):
+def obtenerOperandos(nivelDeDificultad):
 
-    '''
-    Imprime una pregunta al jugador y devuelve el resultado 
-    de la operacion entre num1 y num2 junto con el operador
-    '''
-
-    op = random.choice(['+','-','*','/'])
-
-    if op == '+':
-        print(f'¿Cuanto es {num1} + {num2}?')
-        return (num1 + num2, '+')
-    elif op == '-':
-        print(f'¿Cuanto es {num1} - {num2}?')
-        return (num1 - num2, '-')
-    elif op == '*':
-        print(f'¿Cuanto es {num1} * {num2}?')
-        return (num1 * num2, '*')
-    elif op == '/':
-        print(f'¿Cuanto es {num1} / {num2}? (Incluya 1 decima)')
-        return (round(num1 / num2, 1), '/')
-
-
-def calculo(dificultad):
-
-    '''
-    Devuelve el resultado de aplicar a la funcion calculo 
-    valores aleatorios de acuerdo al valor de dificultad
-    '''
+    # Devuelve los numeros que se usaran en la operación
 
     num1 = None
     num2 = None
-
-    if dificultad == 1:
-        num1 = random.randint(1,9)
-        num2 = random.randint(1,9)
+    
+    if nivelDeDificultad == 1:
+        num1 = random.randint(5,20)
+        num2 = random.randint(5,20)
     else:
-        num1 = random.randint(10,99)
-        num2 = random.randint(10,99)
+        num1 = random.randint(20,50)
+        num2 = random.randint(20,50)
 
-    return calcular(num1, num2)
+    return (num1,num2)
+
+
+def generarCalculo(num, otroNum):
+
+    # Genera la pregunta y retorna una tupla con el resultado
+    # de dicha pregunta y el operador utilizado
+
+    operacionAleatoria = random.choice(['+','-','*','/'])
+    resultado = None
+
+    print(f'¿Cuanto es {num} {operacionAleatoria} {otroNum}?\n')
+
+    if operacionAleatoria == '+':
+        resultado = num + otroNum
+    elif operacionAleatoria == '-':
+        resultado = num - otroNum
+    elif operacionAleatoria == '*':
+        resultado = num * otroNum
+    else:
+        resultado = num / otroNum
+
+    return (resultado,operacionAleatoria)

@@ -1,35 +1,26 @@
 
-# Funciones verificacion
-
-def esValido(var1, var2, var3):
-    return var1 == var2 or var1 == var3
+# Funciones de verificación
 
 
-def mssgEsValido(var1, var2, var3):
-    if not esValido(var1, var2, var3):
-        print('Valor incorrecto, ingrese valor nuevamente')
+def mssg():
+    print('Valor incorrecto, ingrese valor nuevamente\n')
 
 
-def esEntero(var):
-    return type(var) == type(0)
+def alerta(valorIngresado, var1, var2):
+    if valorIngresado not in [var1, var2]:
+        mssg()
 
 
-def esFlotante(var):
-    return type(var) == type(0.0)
+def respuestaCorrecta(rtaDelUsuario, rtaCorrecta):
 
+    # Verifica si la respuesta del usuario es correcta y retorna el valor de verdad 
+    # correspondiente junto con un mensaje de consola 
 
-def respuestaCorrecta(rta, rtaCorrecta):
-
-    '''
-    Verifica si rta es igual a rtaCorrecta e imprime un 
-    mensaje de acuerdo al valor de verdad de dicha igualdad
-    '''
-
-    esCorrecto = rta == rtaCorrecta
+    esCorrecto = rtaDelUsuario == rtaCorrecta
 
     if esCorrecto:
-        print('Correcto\n')
-        return True
+        print('Correcto')
     else:
-        print(f'Incorrecto. La respuesta era: {rtaCorrecta}\n')
-        return False
+        print(f'Incorrecto. La respuesta era: {rtaCorrecta}')
+
+    return esCorrecto
